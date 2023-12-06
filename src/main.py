@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:1234@localhost/water_park_worker'
 app.config['SECRET_KEY'] = 'rly_secret_key'
 db = SQLAlchemy(app)
-admin = Admin(app, template_mode='bootstrap3')
+admin = Admin(app, template_mode='bootstrap3', url='/water/admin/')
 
 rates_visitor_relation = db.Table('rates_visitor_relation',
     db.Column('id', db.Integer, primary_key=True),
@@ -157,7 +157,7 @@ admin.add_view(StaffAdminView(Staff, db.session))
 admin.add_view(ServiceAdminView(Service, db.session))
 admin.add_view(SessionAdminView(Session, db.session))
 
-@app.route('/')
+@app.route('/water/')
 def index():
     return render_template('index.html')
 
