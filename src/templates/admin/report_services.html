@@ -1,0 +1,25 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+    <h2>Отчет по услугам</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Дата события</th>
+                <th>Описание</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for service_item in services %}
+                <tr>
+                    <td>{{ service_item.id_service }}</td>
+                    <td>{{ service_item.name_service }}</td>
+                    <td>{{ service_item.date_event }}</td>
+                    <td>{{ service_item.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

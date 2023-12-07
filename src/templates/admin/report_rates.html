@@ -1,0 +1,25 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+    <h2>Отчет по тарифам</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Продолжительность</th>
+                <th>Описание</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rate in rates %}
+                <tr>
+                    <td>{{ rate.id_rates }}</td>
+                    <td>{{ rate.name_rate }}</td>
+                    <td>{{ rate.duration }}</td>
+                    <td>{{ rate.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

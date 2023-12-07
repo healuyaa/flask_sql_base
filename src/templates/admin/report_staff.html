@@ -1,0 +1,23 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+    <h2>Отчет по сотрудникам</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ФИО</th>
+                <th>Номер телефона</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for staff_member in staff %}
+                <tr>
+                    <td>{{ staff_member.id_staff }}</td>
+                    <td>{{ staff_member.full_name }}</td>
+                    <td>{{ staff_member.number_phone_staff }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

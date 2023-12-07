@@ -1,0 +1,25 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+    <h2>Отчет по посетителям</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ФИО</th>
+                <th>Адрес</th>
+                <th>Номер телефона</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for visitor in visitors %}
+                <tr>
+                    <td>{{ visitor.id_visitor }}</td>
+                    <td>{{ visitor.full_name }}</td>
+                    <td>{{ visitor.address_visitor }}</td>
+                    <td>{{ visitor.number_phone_visitor }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

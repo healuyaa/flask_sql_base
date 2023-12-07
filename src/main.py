@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask_admin import Admin
+from flask_admin import Admin, BaseView, expose, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.form import Select2Widget
 
@@ -101,7 +101,6 @@ class RatesAdminView(ModelView):
         }
     }
 
-
 class VisitorAdminView(ModelView):
     column_display_pk = True
     column_list = ['id_visitor', 'full_name', 'address_visitor', 'number_phone_visitor', 'rates', 'staff']
@@ -156,6 +155,42 @@ admin.add_view(VisitorAdminView(Visitor, db.session))
 admin.add_view(StaffAdminView(Staff, db.session))
 admin.add_view(ServiceAdminView(Service, db.session))
 admin.add_view(SessionAdminView(Session, db.session))
+
+class RatesReportView(BaseView):
+    @expose('/')
+    def index(self):
+        rates = Rates.query.all()
+        return self.render('admin/report_rates.html', rates=rates)
+
+class VisitorReportView(BaseView):
+    @expose('/')
+    def index(self):
+        visitors = Visitor.query.all()
+        return self.render('admin/report_visitors.html', visitors=visitors)
+
+class StaffReportView(BaseView):
+    @expose('/')
+    def index(self):
+        staff = Staff.query.all()
+        return self.render('admin/report_staff.html', staff=staff)
+
+class ServiceReportView(BaseView):
+    @expose('/')
+    def index(self):
+        services = Service.query.all()
+        return self.render('admin/report_services.html', services=services)
+
+class SessionReportView(BaseView):
+    @expose('/')
+    def index(self):
+        sessions = Session.query.all()
+        return self.render('admin/report_sessions.html', sessions=sessions)
+
+admin.add_view(RatesReportView(name='Rates Report', endpoint='rates_report'))
+admin.add_view(VisitorReportView(name='Visitor Report', endpoint='visitor_report'))
+admin.add_view(StaffReportView(name='Staff Report', endpoint='staff_report'))
+admin.add_view(ServiceReportView(name='Service Report', endpoint='service_report'))
+admin.add_view(SessionReportView(name='Session Report', endpoint='session_report'))
 
 @app.route('/water/')
 def index():

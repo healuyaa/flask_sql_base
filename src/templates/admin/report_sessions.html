@@ -1,0 +1,25 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+    <h2>Отчет по сессиям</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Продолжительность</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for session_item in sessions %}
+                <tr>
+                    <td>{{ session_item.id_session }}</td>
+                    <td>{{ session_item.name_session }}</td>
+                    <td>{{ session_item.description }}</td>
+                    <td>{{ session_item.duration }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
