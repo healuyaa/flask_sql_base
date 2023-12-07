@@ -94,6 +94,7 @@ class Session(db.Model):
 class RatesAdminView(ModelView):
     column_display_pk = True
     column_list = ['id_rates', 'name_rate', 'duration', 'description', 'visitors']
+    column_searchable_list = ['id_rates', 'name_rate', 'duration', 'description']
     
     form_ajax_refs = {
         'visitors': {
@@ -104,6 +105,7 @@ class RatesAdminView(ModelView):
 class VisitorAdminView(ModelView):
     column_display_pk = True
     column_list = ['id_visitor', 'full_name', 'address_visitor', 'number_phone_visitor', 'rates', 'staff']
+    column_searchable_list = ['id_visitor', 'full_name', 'address_visitor', 'number_phone_visitor']
     
     form_ajax_refs = {
         'rates': {
@@ -117,6 +119,7 @@ class VisitorAdminView(ModelView):
 class StaffAdminView(ModelView):
     column_display_pk = True
     column_list = ['id_staff', 'full_name', 'number_phone_staff', 'visitors', 'services']
+    column_searchable_list = ['id_staff', 'full_name', 'number_phone_staff']
     
     form_ajax_refs = {
         'visitors': {
@@ -130,6 +133,7 @@ class StaffAdminView(ModelView):
 class ServiceAdminView(ModelView):
     column_display_pk = True
     column_list = ['id_service', 'name_service', 'date_event', 'description', 'staff', 'sessions']
+    column_searchable_list = ['id_service', 'name_service', 'date_event', 'description']
 
     form_ajax_refs = {
         'staff': {
@@ -143,6 +147,7 @@ class ServiceAdminView(ModelView):
 class SessionAdminView(ModelView):
     column_display_pk = True
     column_list = ['id_session', 'name_session', 'description', 'duration', 'service']
+    column_searchable_list = ['id_session', 'name_session', 'description']
     
     form_ajax_refs = {
         'service': {
