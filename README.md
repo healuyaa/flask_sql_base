@@ -21,7 +21,7 @@ If you prefer to run the application locally, follow these steps:
     Run the following command to install the necessary Python libraries:
     pip install Flask Flask_admin SQLalchemy pymysql
 3. Set up MySQL Support
-    use MySQL script from flask_sql_base/src
+    use MySQL script from flask_sql_base/sql
 4. Navigate to the Repository
     cd flask_sql_base/src
 5. Run the Application
